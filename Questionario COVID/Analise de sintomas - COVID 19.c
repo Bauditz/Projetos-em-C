@@ -252,7 +252,7 @@ printf("\nProvavelmente este nao e o melhor lugar para se estar no momento.\n");
 
 printf("\nVoce deve se encaminhar para a ala de baixo risco.\n");
 
-}else if (paciente >= 10 && paciente < 20){
+}else if (paciente >= 10 && paciente < 19){
 
 printf("\nVoce deve se encaminhar para a ala de medio risco.\n");
 
