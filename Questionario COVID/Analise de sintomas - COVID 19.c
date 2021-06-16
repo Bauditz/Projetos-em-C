@@ -45,6 +45,13 @@ int main(){
 
 setlocale(LC_ALL, "ptb");
 
+    //Criar um arquivo
+    FILE *sin_arq;
+
+    //Abre o arquivo (para gravar os dados)
+    sin_arq = fopen("dados sintomas COVID - TOTEM.txt","a");
+
+
 
 personalregister,name,sex,age;
 
@@ -60,27 +67,31 @@ system("pause");
 system("cls");
 
 
-printf("\nPor favor, informe seu CPF sem tracos, pontos, virgulas e espaços: \n");
-scanf("%s",&personalregister);
-
-fflush(stdin);
-
-printf("\nAgora, escreva somente seu primeiro nome: \n");
+printf("\nEscreva somente seu primeiro nome: \n");
 scanf("%s",&name);
-
+fprintf(sin_arq, "\nNome: %s.\n", name);
 fflush(stdin);
 
 printf("\nPreciso saber sua idade: \n");
 scanf("%s",&age);
-
+fprintf(sin_arq, "Idade: %s.\n", age);
 fflush(stdin);
 
 printf("\nAgora diga seu sexo: Masculino ou Feminino?\n");
 scanf("%s",&sex);
-
+fprintf(sin_arq, "Sexo: %s.\n", sex);
 fflush(stdin);
 
+printf("\nPor favor, informe seu CPF: \n");
+scanf("%s",&personalregister);
+fprintf(sin_arq, "CPF: %s.\n", personalregister);
+fflush(stdin);
+
+
 system("cls");
+
+//Usar as váriaveis para confirmar os dados, para o paciente, é uma forma de ver se tudo está correto,
+//para nós, uma forma de verificar se tudo está indo bem.
 
 printf("\nVamos confirmar?\n");
 printf("\nSeu nome e: %s.\n", &name);
@@ -109,6 +120,8 @@ system("cls");
 
 printf("\nEsta com febre?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P1: %i.", respostas);
+
 
 if (respostas == 1){
 
@@ -123,6 +136,7 @@ fflush(stdin);
 
 printf("\nTem dores de cabeca?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P2: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -136,6 +150,7 @@ fflush(stdin);
 
 printf("\nEsta com secrecao nasal ou espirros?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P3: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -149,6 +164,7 @@ fflush(stdin);
 
 printf("\nTem dores ou irritacao na garganta?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P4: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -162,6 +178,7 @@ fflush(stdin);
 
 printf("\nEsta com tosse seca?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P5: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -175,6 +192,7 @@ fflush(stdin);
 
 printf("\nEsta com dificuldade respiratoria?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P6: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -188,6 +206,7 @@ fflush(stdin);
 
 printf("\nTem dores corporais?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P7: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -201,6 +220,7 @@ fflush(stdin);
 
 printf("\nEsta ou teve diarreia?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P8: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -214,6 +234,7 @@ fflush(stdin);
 
 printf("\nEsteve em contato, nos ultimos 14 dias, com um caso diagnosticado com COVID-19?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P9: %i. ", respostas);
 
 if (respostas == 1){
 
@@ -225,13 +246,15 @@ fflush(stdin);
 
 //Pergunta 10:
 
-printf("\nEsteve em locais com grande aglomeração?\n");
+printf("\nEsteve em locais com grande aglomeracao?\n");
 scanf("%i", &respostas);
+fprintf(sin_arq, "P10: %i.\n", respostas);
 
 if (respostas == 1){
 
     paciente=paciente+3;
 }
+
 system("cls");
 system("pause");
 fflush(stdin);
@@ -262,9 +285,21 @@ printf("\nVoce deve se encaminhar para a ala de alto risco.\n");
 
 }
 
+
+printf("\nSiga a instrucao anterior, as suas respostas serao salvas para possiveis auditorias internas.\n");
+system("pause");
+system("cls");
+
+
+printf("\nSua pontuacao foi de %i em relacao a soma dos sintomas.\n", paciente);
+fprintf(sin_arq, "Soma de pontos: %i.\n", paciente);
 system("pause");
 
+
+
 return 0;
+    //Usado para fechar o arquivo e salvar os dados
+    fclose(sin_arq);
 
 }
 
