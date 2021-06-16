@@ -1,37 +1,3 @@
-//O paciente precisa ser abordado pela interface e preencher os seguintes dados para se cadastrar no sistema:
-
-//1ºCPF; 2º Nome; 3º Sexo; 4º Idade.
-
-//Após se cadastrar, precisará responder algumas questões sobre sintomas, que somarão pontos, mas não irão
-//subtrair. São eles:
-
-//Tem Febre? (5 pontos);
-//Tem dor de cabeça? (1 ponto);
-//Tem secreção nasal ou espirros? (1 ponto);
-//Tem dor/irritação na garganta? (1 ponto);
-//Tem tosse seca? (3 pontos);
-//Tem dificuldade respiratória? (10 pontos);
-//Tem dores no corpo? (1 ponto);
-//Tem diarréia? (1 ponto);
-//Esteve em contato, nos últimos 14 dias, com um caso diagnosticado com COVID-19? (10 pontos);
-//Esteve em locais com grande aglomeração? (3 pontos).
-
-//Se 0 a 9 - Ala de Baixo Risco;
-//Se 10 a 19 - Ala de Médio Risco;
-//Se 20 ou mais - Ala de Alto Risco.
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <string.h>
-
-
-//system("pause") - segura o sistema para não ir para a proxima etapa, pedindo para o usuario teclar algo.
-//setlocale(LC_ALL, "Portuguese") - Teoricamente, usa-se para possibilitar caracteres especiais do Portugues, como ^,´,Ç e etc...
-//system("cls") - //apaga o texto mostrado em tela.
-//printf("...") - Usa para textos em tela.
-
-
 char personalregister[100][50];
 char age[100][50];
 char name[100][50];
@@ -45,80 +11,75 @@ int main(){
 
 setlocale(LC_ALL, "ptb");
 
-    //Criar um arquivo
+    //Create a archive
     FILE *sin_arq;
 
-    //Abre o arquivo (para gravar os dados)
-    sin_arq = fopen("dados sintomas COVID - TOTEM.txt","a");
+    //Command to open the file (To save data)
+    sin_arq = fopen("data patient COVID.txt","a");
 
 
 
 personalregister,name,sex,age;
 
 
-printf("\nOla, bem-vindo ao auto-atendimento para analise dos sintomas do Covid-19.\n");
+printf("\nHello, here you will be able to answer some question about the symptoms that you are feeling, related to COVID.\n");
 
 system("pause");
 system("cls");
 
-printf("\nAntes de iniciarmos os procedimentos, precisamos realizar o seu cadastro.\n");
+printf("\nBefore we get started, we need to create your patient archive.\n");
 
 system("pause");
 system("cls");
 
 
-printf("\nEscreva somente seu primeiro nome: \n");
+printf("\nWrite your first name: \n");
 scanf("%s",&name);
-fprintf(sin_arq, "\nNome: %s.\n", name);
+fprintf(sin_arq, "\nName: %s.\n", name);
 fflush(stdin);
 
-printf("\nPreciso saber sua idade: \n");
+printf("\nI need to know your age: \n");
 scanf("%s",&age);
-fprintf(sin_arq, "Idade: %s.\n", age);
+fprintf(sin_arq, "Age: %s.\n", age);
 fflush(stdin);
 
-printf("\nAgora diga seu sexo: Masculino ou Feminino?\n");
+printf("\nNow tell me, are you a woman or men?\n");
 scanf("%s",&sex);
-fprintf(sin_arq, "Sexo: %s.\n", sex);
+fprintf(sin_arq, "Sex: %s.\n", sex);
 fflush(stdin);
 
-printf("\nPor favor, informe seu CPF: \n");
+printf("\nNow your personal register (ID): \n");
 scanf("%s",&personalregister);
-fprintf(sin_arq, "CPF: %s.\n", personalregister);
+fprintf(sin_arq, "ID: %s.\n", personalregister);
 fflush(stdin);
-
-
 system("cls");
 
-//Usar as váriaveis para confirmar os dados, para o paciente, é uma forma de ver se tudo está correto,
-//para nós, uma forma de verificar se tudo está indo bem.
 
-printf("\nVamos confirmar?\n");
-printf("\nSeu nome e: %s.\n", &name);
-printf("\nSua idade e: %s.\n", &age);
-printf("\nSeu sexo e: %s.\n", &sex);
-printf("\nPor ultimo, seu CPF e: %s.\n", &personalregister);
+printf("\nLet's check it out.\n");
+printf("\nYour name is: %s.\n", &name);
+printf("\nYour age is: %s.\n", &age);
+printf("\nYour sex is: %s.\n", &sex);
+printf("\nAnd your ID is: %s.\n", &personalregister);
 
 system("pause");
 system("cls");
 
 
-printf("\nAgora preciso que responda algumas questoes sobre sintomas relacionados ao COVID-19.\n");
-printf("\nConforme as respostas, poderemos lhe encaminhar para o local mais apropriado.\n");
+printf("\nNow some question will be asken, you need to be honest about your symptoms related to COVID-19.\n");
+printf("\nAfter the questions, we will be able to guide you to the better local.\n");
 
 system("pause");
 system("cls");
 
-printf("\nLembre-se, e necessario ser sincero em todas as respostas.\n");
-printf("\nUse 1 para sim e 0 para nao, nao esqueca desse detalhe.\n");
-printf("\nEntao, vamos la...\n");
+printf("\nRemember, you need to be honest.\n");
+printf("\nUse 1 for yes and 0 for no, don't forget it, okay?\n");
 
 system("pause");
 system("cls");
 
-//Pergunta 1:
+//1º Question:
 
-printf("\nEsta com febre?\n");
+printf("\nDo you have fever?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P1: %i.", respostas);
 
@@ -132,9 +93,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 2:
+//2º  Question:
 
-printf("\nTem dores de cabeca?\n");
+printf("\nDo you have headache?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P2: %i. ", respostas);
 
@@ -146,9 +107,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 3:
+//3º Question:
 
-printf("\nEsta com secrecao nasal ou espirros?\n");
+printf("\nDo you have nasal discharge or sneezes?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P3: %i. ", respostas);
 
@@ -160,9 +121,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 4:
+//4º Question:
 
-printf("\nTem dores ou irritacao na garganta?\n");
+printf("\nDo you feel pain or irritation in the throat?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P4: %i. ", respostas);
 
@@ -174,9 +135,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 5:
+//5º Question:
 
-printf("\nEsta com tosse seca?\n");
+printf("\nDo you have a dry cough?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P5: %i. ", respostas);
 
@@ -188,9 +149,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 6:
+//6º Question:
 
-printf("\nEsta com dificuldade respiratoria?\n");
+printf("\nAre you with any type of breathing difficulty?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P6: %i. ", respostas);
 
@@ -202,9 +163,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 7:
+//7º Question:
 
-printf("\nTem dores corporais?\n");
+printf("\nDo you have any corporal pain?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P7: %i. ", respostas);
 
@@ -216,9 +177,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 8:
+//8º Question:
 
-printf("\nEsta ou teve diarreia?\n");
+printf("\nAre you with diarrhea?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P8: %i. ", respostas);
 
@@ -230,9 +191,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 9:
+//9º Question:
 
-printf("\nEsteve em contato, nos ultimos 14 dias, com um caso diagnosticado com COVID-19?\n");
+printf("\nDo you, in any case, make contact with someone who got COVID, in these last 14 days?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P9: %i. ", respostas);
 
@@ -244,9 +205,9 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Pergunta 10:
+//10º Question:
 
-printf("\nEsteve em locais com grande aglomeracao?\n");
+printf("\nHave you been to crowded places?\n");
 scanf("%i", &respostas);
 fprintf(sin_arq, "P10: %i.\n", respostas);
 
@@ -259,46 +220,46 @@ system("cls");
 system("pause");
 fflush(stdin);
 
-//Fim das perguntas.
+//End
 
-printf("\nAgora vamos analisar os seus sintomas...\n");
+printf("\nNow let's us analyze your symptoms...\n");
 system("pause");
 system("cls");
 
-//Agora é necessário fazer a condição das alas.
+//Now you must do the if condition
 
 if (paciente == 0){
 
-printf("\nProvavelmente este nao e o melhor lugar para se estar no momento.\n");
+printf("\nThat's not the best place to be now.\n");
 
 }else if (paciente <= 9){
 
-printf("\nVoce deve se encaminhar para a ala de baixo risco.\n");
+printf("\nYou must go to the low level ward.\n");
 
 }else if (paciente >= 10 && paciente < 19){
 
-printf("\nVoce deve se encaminhar para a ala de medio risco.\n");
+printf("\nYou must go to the medium level ward.\n");
 
 }else if (paciente >= 20){
 
-printf("\nVoce deve se encaminhar para a ala de alto risco.\n");
+printf("\nYou must go to the high risk ward.\n");
 
 }
 
 
-printf("\nSiga a instrucao anterior, as suas respostas serao salvas para possiveis auditorias internas.\n");
+printf("\nFollow the instructions, your answers will be saved for internal uses.\n");
 system("pause");
 system("cls");
 
 
-printf("\nSua pontuacao foi de %i em relacao a soma dos sintomas.\n", paciente);
+printf("\nYour got %i points in relation about the symptoms that you have.\n", paciente);
 fprintf(sin_arq, "Soma de pontos: %i.\n", paciente);
 system("pause");
 
 
 
 return 0;
-    //Usado para fechar o arquivo e salvar os dados
+    //Used to close an archive and save datas
     fclose(sin_arq);
 
 }
